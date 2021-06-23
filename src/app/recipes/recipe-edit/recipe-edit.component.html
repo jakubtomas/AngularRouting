@@ -1,0 +1,78 @@
+<div class="row">
+    <div class=" col-md-7 col-sm-offset-1 col-md-offset-2">
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
+            <div
+                    id="user-data"
+                    ngModelGroup="userData"
+                    #userData="ngModelGroup">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input
+                            type="text"
+                            id="name"
+                            class="form-control"
+                            ngModel
+                            name="name"
+                            required
+                            #name="ngModel"
+                    >
+                    <p>
+                        <span class="help-block alert-danger " *ngIf="!name.valid && name.touched ">Warning : Please enter name</span>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input
+                            type="text"
+                            id="description"
+                            class="form-control"
+                            ngModel
+                            name="description"
+                            required
+                            #description="ngModel"
+                    >
+                    <p>
+                        <span class="help-block alert-danger" *ngIf="!description.valid && description.touched ">Warning : Please enter name</span>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="imagePath">Image path</label>
+                    <input
+                            type="text"
+                            id="imagePath"
+                            class="form-control"
+                            ngModel
+                            name="imagePath"
+                            required
+                            #imagePath="ngModel"
+                    >
+                    <p>
+                        <span class="help-block alert-danger" *ngIf="!imagePath.valid && imagePath.touched ">Warning : Please enter name</span>
+                    </p>
+                </div>
+
+            </div>
+
+                <button
+                        class="btn btn-primary"
+                        type="submit"
+                        [disabled]="!f.valid">Submit
+                </button>
+        </form>
+    </div>
+</div>
+<hr>
+
+
+<div class="row" *ngIf="submitted">
+    <div class="col-xs-12">
+        <h3>Your Data</h3>
+        <p>name: {{ recipe.name }}</p>
+        <p>Description: {{ recipe.description }}</p>
+        <p>Image path {{ user.imagePath}}</p>
+        <p>Answer: {{ user.answer }}</p>
+        <p>Gender: {{ user.gender }}</p>
+    </div>
+</div>
