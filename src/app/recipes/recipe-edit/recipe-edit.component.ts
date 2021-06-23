@@ -69,7 +69,6 @@ export class RecipeEditComponent implements OnInit {
         this.user.secretQuestion = this.signupForm.value.secret;
         this.user.answer = this.signupForm.value.questionAnswer;
         this.user.gender = this.signupForm.value.gender;
-
         this.recipe.name = this.signupForm.value.userData.name;
         this.recipe.description = this.signupForm.value.userData.description;
         this.recipe.imagePath = this.signupForm.value.userData.imagePath;
