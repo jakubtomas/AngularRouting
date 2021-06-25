@@ -6,9 +6,13 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import {RecipePlaygroundComponent} from './recipes/recipe-playground/recipe-playground.component';
+import {RecipeFirebaseItemsComponent} from './recipes/recipe-firebase-items/recipe-firebase-items.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+  { path: 'add-tutorial', component: RecipePlaygroundComponent},
+  { path: 'items', component: RecipeFirebaseItemsComponent},
   { path: 'recipes', component: RecipesComponent, children: [
     { path: '', component: RecipeStartComponent },
     { path: 'new', component: RecipeEditComponent },

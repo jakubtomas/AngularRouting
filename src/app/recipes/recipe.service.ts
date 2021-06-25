@@ -5,6 +5,9 @@ import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import {Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import { AngularFirestore } from '@angular/fire/firestore';
+
+import { FormControl, FormGroup } from "@angular/forms";
 
 @Injectable()
 export class RecipeService {
@@ -30,8 +33,16 @@ export class RecipeService {
   ];
 
   constructor(private slService: ShoppingListService,
-              private http: HttpClient) {
+              private http: HttpClient,
+              private firestore: AngularFirestore ) {
   }
+
+  form = new FormGroup({
+    customerName: new FormControl(''),
+    orderNumber: new FormControl(''),
+    coffeeOrder: new FormControl(''),
+    completed: new FormControl(false)
+  });
 
   getRecipes() {
     return this.recipes.slice();
@@ -59,9 +70,17 @@ export class RecipeService {
     this.slService.addIngredients(ingredients);
   }
 
-  sayHelloWorld() {
-    console.log("function Hello world");
 
+  createCoffeeOrder(data) {
+    return new Promise<any>((resolve, reject) =>{
+      this.firestore
+          .collection("coffeeOrders")
+          .add(data)
+          .then(res => {
+            console.log( res)
+          },
+                  err => reject(err));
+    });
   }
 
 

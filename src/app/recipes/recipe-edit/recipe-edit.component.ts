@@ -91,7 +91,6 @@ export class RecipeEditComponent implements OnInit {
 
 
         this.recipeService.addRecipe(this.recipeInstance);
-        this.recipeService.sayHelloWorld();
     }
 
 }

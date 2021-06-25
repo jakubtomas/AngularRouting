@@ -19,6 +19,15 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import {HttpClientModule} from '@angular/common/http';
 import {RecipeService} from './recipes/recipe.service';
 
+import { environment } from "src/environments/environment";
+import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { RecipePlaygroundComponent } from './recipes/recipe-playground/recipe-playground.component';
+import { ReactiveFormsModule } from "@angular/forms";
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {FirebaseService} from './recipes/firebase.service';
+import { RecipeFirebaseItemsComponent } from './recipes/recipe-firebase-items/recipe-firebase-items.component';
+import { TutorialDetailsComponent } from './recipes/recipe-firebase-items/tutorial-details/tutorial-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,15 +41,22 @@ import {RecipeService} from './recipes/recipe.service';
     DropdownDirective,
     RecipeStartComponent,
     RecipeEditComponent,
+    RecipePlaygroundComponent,
+    RecipeFirebaseItemsComponent,
+    TutorialDetailsComponent,
 
   ],
   imports: [
+      ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
   ],
-  providers: [ShoppingListService,RecipeService],
+  providers: [ShoppingListService,RecipeService,FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
