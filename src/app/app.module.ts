@@ -28,6 +28,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {FirebaseService} from './recipes/firebase.service';
 import { RecipeFirebaseItemsComponent } from './recipes/recipe-firebase-items/recipe-firebase-items.component';
 import { TutorialDetailsComponent } from './recipes/recipe-firebase-items/tutorial-details/tutorial-details.component';
+import { AuthComponent } from './auth/auth.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { TutorialDetailsComponent } from './recipes/recipe-firebase-items/tutori
     RecipePlaygroundComponent,
     RecipeFirebaseItemsComponent,
     TutorialDetailsComponent,
+    AuthComponent,
 
   ],
   imports: [
