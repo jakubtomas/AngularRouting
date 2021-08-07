@@ -9,6 +9,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import {RecipePlaygroundComponent} from './recipes/recipe-playground/recipe-playground.component';
 import {RecipeFirebaseItemsComponent} from './recipes/recipe-firebase-items/recipe-firebase-items.component';
 import {AuthComponent} from './auth/auth.component';
+import {VerifyEmailComponent} from './verify-email/verify-email.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
@@ -22,6 +23,8 @@ const appRoutes: Routes = [
     { path: ':id/edit', component: RecipeEditComponent },
   ] },
   { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'email-verification', component: VerifyEmailComponent }
+
 ];
 
 @NgModule({

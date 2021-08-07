@@ -29,6 +29,8 @@ import {FirebaseService} from './recipes/firebase.service';
 import { RecipeFirebaseItemsComponent } from './recipes/recipe-firebase-items/recipe-firebase-items.component';
 import { TutorialDetailsComponent } from './recipes/recipe-firebase-items/tutorial-details/tutorial-details.component';
 import { AuthComponent } from './auth/auth.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +48,8 @@ import { AuthComponent } from './auth/auth.component';
     RecipeFirebaseItemsComponent,
     TutorialDetailsComponent,
     AuthComponent,
+    VerifyEmailComponent,
+    ForgotPasswordComponent,
 
   ],
   imports: [

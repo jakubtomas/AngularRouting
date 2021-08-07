@@ -27,6 +27,11 @@
                 />
             </div>
             <div>
+
+                <div *ngIf="firebaseErrorMessage != ''" class="alert alert-danger">
+                    <span>{{ firebaseErrorMessage }}</span>
+                </div>
+
                 <button
                         class="btn btn-primary"
                         type="submit"

@@ -12,26 +12,27 @@ export class AuthComponent implements OnInit {
   isLoginMode = true;
   isLoading = false;
   error: string = null;
+  message:object = null;
+  firebaseErrorMessage: string;
 
 
-
-  constructor(private authService: AuthService) {}
-
+  constructor(private authService: AuthService) {
+    this.firebaseErrorMessage = '';
+  }
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
-
   onSubmit(form: NgForm) {
     if (!form.valid) {
       return;
+
     }
     const email = form.value.email;
     const password = form.value.password;
-
     this.isLoading = true;
     if (this.isLoginMode) {
-      // ...
+      //todo doplinti
       console.log("run function login");
       
     } else {
@@ -48,9 +49,25 @@ export class AuthComponent implements OnInit {
       );*/
 
       console.log("run registration");
-      
-      this.authService.SignUp(email, password)
 
+     // this.message =  this.authService.SignUp(email, password);
+      this.authService.SignUp(email, password).then((result) => {
+        if (result == null) {// null is success, false means there was an error
+          console.log('result is null');
+
+        } else {
+          console.log('result is not null');
+          console.log(result);
+          console.log('resut message ');
+          console.log(result.message);
+
+
+          this.firebaseErrorMessage = result.message;
+        }
+      }).catch((error) => {
+
+      });
+      
     }
 
     form.reset();
