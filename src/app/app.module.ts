@@ -31,6 +31,7 @@ import { TutorialDetailsComponent } from './recipes/recipe-firebase-items/tutori
 import { AuthComponent } from './auth/auth.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     AuthComponent,
     VerifyEmailComponent,
     ForgotPasswordComponent,
+    DashboardComponent,
 
   ],
   imports: [

@@ -27,14 +27,21 @@ export class AuthService {
                 public afAuth: AngularFireAuth,
                 public ngZone: NgZone) {
         this.afAuth.authState.subscribe(user => {
-            /*if (user) {
+            if (user) {
+                console.log("I have user set localStorage ");
+                console.log(user);
+                console.log("////////");
+                
+                
               this.userState = user;
               localStorage.setItem('user', JSON.stringify(this.userState));
               JSON.parse(localStorage.getItem('user'));
             } else {
+                console.log("I do not have user set null");
+                
               localStorage.setItem('user', null);
               JSON.parse(localStorage.getItem('user'));
-            }*/
+            }
         });
 
     }// end constructor body
@@ -77,7 +84,7 @@ export class AuthService {
 
                 //  result.user.sendEmailVerification()
 
-                this.SendVerificationMail()
+                this.SendVerificationMail();
                 this.SetUserData(result.user);
             }).catch((error) => {
                 console.log('Auth Service: signup error', error);
