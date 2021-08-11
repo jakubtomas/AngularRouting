@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {AuthService} from '../auth/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   ///todo inject service here
-  constructor() { }
+  constructor(public authService: AuthService,
+  public afAuth: AngularFireAuth, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
   }

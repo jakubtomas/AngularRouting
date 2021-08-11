@@ -28,6 +28,8 @@ export class AuthService {
                 public ngZone: NgZone) {
         this.afAuth.authState.subscribe(user => {
             if (user) {
+                console.log("prisla zmena ");
+                
                 console.log("I have user set localStorage ");
                 console.log(user);
                 console.log("////////");
@@ -46,22 +48,49 @@ export class AuthService {
 
     }// end constructor body
 
-    SignIn(email, password) {
+    SignIn(email, password): Promise<any> {
         return this.afAuth.signInWithEmailAndPassword(email, password)
-            .then((result) => {
-                this.ngZone.run(() => {
+            .then(() => {
+                console.log('Auth Service: loginUser: success');
+                this.router.navigate(['dashboard']);
+            })
+            .catch(error => {
+                console.log('Auth Service: login error...');
+                console.log('error code', error.code);
+                console.log('error', error);
+                if (error.code)
+                    return { isValid: false, message: error.message };
+            });
 
-                    // todo navigation
-                  //  this.router.navigate(['dashboard']);
-                   //todo message
+            /*.then((result) => {
+                this.ngZone.run(() => {
+                    this.router.navigate(['dashboard']);
 
                 });
                 this.SetUserData(result.user);
             }).catch((error) => {
 
-                //todo message
-                window.alert(error.message);
+                if (error.code)
+                    return { isValid: false, message: error.message };
+            });*/
+
+        /*
+        *  return this.afAuth.signInWithEmailAndPassword(email, password)
+            .then(() => {
+                console.log('Auth Service: loginUser: success');
+                // this.router.navigate(['/dashboard']);
+            })
+            .catch(error => {
+                console.log('Auth Service: login error...');
+                console.log('error code', error.code);
+                console.log('error', error);
+                if (error.code)
+                    return { isValid: false, message: error.message };
             });
+
+        *
+        * */
+
     }
 
     SignUp(email, password): Promise<any> {
@@ -98,7 +127,8 @@ export class AuthService {
     SendVerificationMail() {
         return this.afAuth.currentUser.then(u => u.sendEmailVerification())
             .then(() => {
-                this.router.navigate(['email-verification']);
+                //this.router.navigate(['email-verification']);
+                this.router.navigate(['dashboard']);
             });
     }
 
@@ -147,9 +177,12 @@ export class AuthService {
     }
 
     SignOut() {
-        return this.afAuth.signOut().then(() => {
+        return this.afAuth.signOut()
+            .then(() => {
             localStorage.removeItem('user');
-            this.router.navigate(['sign-in']);
+            this.router.navigate(['login']);
+            console.log("odhlasenie ");
+            
         });
     }
 

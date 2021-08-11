@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from './auth.service';
+import {childOfKind} from 'tslint';
 
 @Component({
   selector: 'app-auth',
@@ -34,7 +35,30 @@ export class AuthComponent implements OnInit {
     if (this.isLoginMode) {
       //todo doplinti
       console.log("run function login");
-      
+
+      this.authService.SignIn(email,password).then((result) => {
+        if (result == null) {// null is success, false means there was an error
+          console.log('result is null');
+          console.log("som prihalsenz ");
+          
+
+        } else {
+          console.log("chyba niesom prishalsenz ");
+          
+          console.log('result is not null');
+          //console.log(result.isValid);
+          console.log('resut message ');
+         // console.log(result.message);
+
+
+          this.firebaseErrorMessage = result.message;
+        }
+      }).catch((error) => {
+        console.log("odchytavam error");
+        console.log(error);
+        
+
+      });
     } else {
       /*this.authService.SignUp(email, password).subscribe(
           resData => {
@@ -63,14 +87,14 @@ export class AuthComponent implements OnInit {
 
 
           this.firebaseErrorMessage = result.message;
+          form.reset();
         }
+
       }).catch((error) => {
 
       });
-      
-    }
 
-    form.reset();
+    }
   }
 
   ngOnInit(): void {

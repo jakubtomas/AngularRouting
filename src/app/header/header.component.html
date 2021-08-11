@@ -11,7 +11,25 @@
         <li routerLinkActive="active"><a routerLink="/add-tutorial">Add Tutorial</a></li>
         <li routerLinkActive="active"><a routerLink="/items">Tutorials</a></li>
         <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+
       </ul>
+
+      <div *ngIf="(afAuth.user | async); else loggedOut">
+        <span>User is logged in</span>
+      </div>
+
+      <!--<p #loggedOut>User is not logged in </p>-->
+
+      <ng-template #loggedOut>
+        <div>
+          User is not logged in
+        </div>
+      </ng-template>
+
+      <div *ngIf="(!afAuth.user | async)">
+        <span>User is not logged in !!!!!</span>
+      </div>
+
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" appDropdown>
           <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
